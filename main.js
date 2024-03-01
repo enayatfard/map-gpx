@@ -2,7 +2,7 @@ import Map from "ol/Map.js";
 import View from "ol/View.js";
 import { GPX } from "ol/format.js";
 import { Tile as TileLayer, Vector as VectorLayer } from "ol/layer.js";
-import { Vector as VectorSource, XYZ } from "ol/source.js";
+import { OSM, Vector as VectorSource, XYZ } from "ol/source.js";
 
 const key = "0yDoYUyzleSI5bGLBsWV";
 const attributions =
@@ -13,12 +13,13 @@ const attributions =
 const map = new Map({
   layers: [
     new TileLayer({
-      source: new XYZ({
-        attributions: attributions,
-        url:
-          "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" + key,
-        maxZoom: 20,
-      }),
+      source: new OSM(), // Use OpenStreetMap as the tile layer source
+      // source: new XYZ({
+      //   attributions: attributions,
+      //   url:
+      //     "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=" + key,
+      //   maxZoom: 20,
+      // }),
     }),
   ],
   target: "map",
